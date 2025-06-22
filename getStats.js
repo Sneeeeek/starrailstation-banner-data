@@ -57,7 +57,7 @@ async function handleData() {
     const jsonBannerData = JSON.parse(bannerData); // NOW it's a real array
     await fs.writeFile('finalBannerData.csv', "Name,Users,TotalPulls,Rerun,BannerDay\n", 'utf8');
     await jsonBannerData.forEach(element => {
-        appendContent = nameArray[element.stats.rateup] + "," + element.stats.users + "," + element.stats.total_pulls + "," +  (element.stats.rerun ? 1 : 0) + "," + element.stats.day + "\n"
+        appendContent = nameArray[element.stats.rateup] + "," + element.stats.users + "," + element.stats.total_pulls + "," +  (element.stats.rerun ? 1 : 0) + "," + (element.stats.day - 738655) + "\n"
         fs.appendFile('finalBannerData.csv', appendContent, 'utf8');
     });
 }
