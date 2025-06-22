@@ -43,10 +43,21 @@ async function getBannerData() {
 // getBannerData();
 handleData();
 
-function handleData() {
-    const data = fsSync.readFileSync('bannerData.json');
-    const json = JSON.parse(data); // NOW it's a real array
-    json.forEach(element => {
-        console.log("cID: " + element.stats.rateup + " Users: " + element.stats.users);
+async function handleData() {
+    const nameArray = {};
+
+    const key = fsSync.readFileSync('key.json');
+    const jsonKey = JSON.parse(key); // NOW it's a real array
+
+    Object.values(jsonKey.items).forEach(element => {
+        nameArray[element.id] = element.name;
+    });
+
+    const bannerData = fsSync.readFileSync('bannerData.json');
+    const jsonBannerData = JSON.parse(bannerData); // NOW it's a real array
+    await fs.writeFile('finalBannerData.csv', "Name,Users,TotalPulls,Rerun\n", 'utf8');
+    await jsonBannerData.forEach(element => {
+        appendContent = nameArray[element.stats.rateup] + "," + element.stats.users + "," + element.stats.total_pulls + "," +  (element.stats.rerun ? 1 : 0) + "\n"
+        fs.appendFile('finalBannerData.csv', appendContent, 'utf8');
     });
 }
