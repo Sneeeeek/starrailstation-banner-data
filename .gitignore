@@ -137,3 +137,5 @@ dist
 key.json
 bannerData.json
 .json
+.csv
+finalBannerData.csv
