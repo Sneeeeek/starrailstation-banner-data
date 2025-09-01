@@ -2,9 +2,9 @@ const fs = require('fs').promises;
 const fsSync = require('fs');
 const axios = require('axios');
 
-function getKey() {
+async function getKey() {
     axios
-        .get("https://starrailstation.com/api/v1/datav2/V3.4Live-11047838-9821/1htif2w")
+        .get("https://starrailstation.com/api/v1/datav2/V3.5Live-11434325-51a3/1htif2w")
         // Show response data
         .then((res) => writeKeyToFile(res.data))
         .catch((err) => console.log(err));
@@ -20,13 +20,12 @@ async function writeKeyToFile(data) {
     }
 }
 
-// https://starrailstation.com/api/v1/warp_fetch/2003 -> 2080 at the time of writing
-const endNum = 2080;
+// https://starrailstation.com/api/v1/warp_fetch/2004 -> 2085 at the time of writing
 async function getBannerData() {
     let bannerDataArray = [];
     let requests = [];
 
-    for (let index = 2003; index <= endNum; index++) {
+    for (let index = 2004; index <= 2085; index++) {
         requests.push(
             axios.get("https://starrailstation.com/api/v1/warp_fetch/" + index)
             .then(res => bannerDataArray.push(res.data))
@@ -72,9 +71,9 @@ async function handleData() {
 }
 
 async function run() {
-await getKey();
-await getBannerData();
-await handleData();
+    await getKey();
+    await getBannerData();
+    await handleData();
 }
 
 run();
