@@ -135,8 +135,8 @@ dist
 .yarn/install-state.gz
 .pnp.*
 key.json
-bannerData.json
+bannerData*.json
 .json
 .csv
-finalBannerData.csv
+finalBannerData*.csv
 output.csv
