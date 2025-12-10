@@ -62,12 +62,12 @@ async function handleData() {
         nameArray[element.id] = element.name;
     });
 
-    const bannerData = fsSync.readFileSync('bannerData.json');
+    const bannerData = fsSync.readFileSync('bannerData' + datetime.toISOString().slice(0,10) + '.json');
     const jsonBannerData = JSON.parse(bannerData); // NOW it's a real array
     await fs.writeFile('finalBannerData' + datetime.toISOString().slice(0,10) + '.csv', "Name,Users,TotalPulls,Rerun,BannerDay\n", 'utf8');
     await jsonBannerData.forEach(element => {
         appendContent = nameArray[element.stats.rateup] + "," + element.stats.users + "," + element.stats.total_pulls + "," +  (element.stats.rerun ? 1 : 0) + "," + (element.stats.day - 738635) + "\n"
-        fs.appendFile('finalBannerData.csv', appendContent, 'utf8');
+        fs.appendFile('finalBannerData' + datetime.toISOString().slice(0,10) + '.csv', appendContent, 'utf8');
     });
 }
 

@@ -1,3 +1,3 @@
 node getStats.js
-timeout 5
+timeout 2
 node group-names.js
