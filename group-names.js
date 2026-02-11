@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { parse } = require('csv-parse/sync');
+var datetime = new Date();
 
 // Read the CSV
 const input = fs.readFileSync('finalBannerData' + datetime.toISOString().slice(0,10) + '.csv', 'utf8');
