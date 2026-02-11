@@ -2,7 +2,7 @@ const fs = require('fs');
 const { parse } = require('csv-parse/sync');
 
 // Read the CSV
-const input = fs.readFileSync('finalBannerData.csv', 'utf8');
+const input = fs.readFileSync('finalBannerData' + datetime.toISOString().slice(0,10) + '.csv', 'utf8');
 const records = parse(input, { columns: true });
 
 // Group names by BannerDay
@@ -20,6 +20,6 @@ for (const [bannerDay, names] of Object.entries(bannerGroups)) {
 }
 
 // Write the new CSV
-fs.writeFileSync('output.csv', output, 'utf8');
+fs.writeFileSync('groupNames' + datetime.toISOString().slice(0,10) + '.csv', output, 'utf8');
 
 console.log('Done! Check output.csv');
