@@ -142,3 +142,4 @@ finalBannerData*.csv
 output.csv
 groupNames*.csv
 get stats and group scheduler.bat
+*.csv
