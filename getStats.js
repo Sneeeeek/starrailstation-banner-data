@@ -5,7 +5,7 @@ var datetime = new Date();
 
 async function getKey() {
     axios
-        .get("https://starrailstation.com/api/v1/datav2/V4.1Live-14444767-7339/1htif2w")
+        .get("https://starrailstation.com/api/v1/datav2/V4.2Live-14809204-4e42/1htif2w")
         // Show response data
         .then((res) => writeKeyToFile(res.data))
         .catch((err) => console.log(err));
@@ -48,7 +48,7 @@ async function getBannerData() {
 
     await Promise.all(requests);
 
-    fsSync.writeFileSync('bannerData' + datetime.toISOString().slice(0,10) + '.json', JSON.stringify(bannerDataArray, null, 2));
+    fsSync.writeFileSync('bannerData/bannerData' + datetime.toISOString().slice(0,10) + '.json', JSON.stringify(bannerDataArray, null, 2));
     console.log('Banner data written:', bannerDataArray.length, 'items.');
 }
 
@@ -62,12 +62,12 @@ async function handleData() {
         nameArray[element.id] = element.name;
     });
 
-    const bannerData = fsSync.readFileSync('bannerData' + datetime.toISOString().slice(0,10) + '.json');
+    const bannerData = fsSync.readFileSync('bannerData/bannerData' + datetime.toISOString().slice(0,10) + '.json');
     const jsonBannerData = JSON.parse(bannerData); // NOW it's a real array
-    await fs.writeFile('finalBannerData' + datetime.toISOString().slice(0,10) + '.csv', "Name,Users,TotalPulls,Rerun,BannerDay\n", 'utf8');
+    await fs.writeFile('finalBannerData/finalBannerData' + datetime.toISOString().slice(0,10) + '.csv', "Name,Users,TotalPulls,Rerun,BannerDay\n", 'utf8');
     await jsonBannerData.forEach(element => {
         appendContent = nameArray[element.stats.rateup] + "," + element.stats.users + "," + element.stats.total_pulls + "," +  (element.stats.rerun ? 1 : 0) + "," + (element.stats.day - 738635) + "\n"
-        fs.appendFile('finalBannerData' + datetime.toISOString().slice(0,10) + '.csv', appendContent, 'utf8');
+        fs.appendFile('finalBannerData/finalBannerData' + datetime.toISOString().slice(0,10) + '.csv', appendContent, 'utf8');
     });
 }
 

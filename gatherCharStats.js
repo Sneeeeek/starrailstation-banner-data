@@ -17,7 +17,7 @@ function nextDateStr(dateStr) {
 }
 
 function filenameForDate(dateStr) {
-    return `finalBannerData${dateStr}.csv`;
+    return `finalBannerData/finalBannerData${dateStr}.csv`;
 }
 
 let date = startDate;
