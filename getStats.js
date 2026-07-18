@@ -5,7 +5,7 @@ var datetime = new Date();
 
 async function getKey() {
     axios
-        .get("https://starrailstation.com/api/v1/datav2/V4.2Live-14809204-4e42/1htif2w")
+        .get("https://starrailstation.com/api/v1/datav2/V4.3Live-15245519-cca2/1htif2w")
         // Show response data
         .then((res) => writeKeyToFile(res.data))
         .catch((err) => console.log(err));
