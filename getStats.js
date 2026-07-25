@@ -46,6 +46,18 @@ async function getBannerData() {
         .catch(err => console.log(err))
     );
 
+    requests.push(
+        axios.get("https://starrailstation.com/api/v1/warp_fetch/" + 5003)
+        .then(res => bannerDataArray.push(res.data))
+        .catch(err => console.log(err))
+    );
+
+    requests.push(
+        axios.get("https://starrailstation.com/api/v1/warp_fetch/" + 5004)
+        .then(res => bannerDataArray.push(res.data))
+        .catch(err => console.log(err))
+    );
+
     await Promise.all(requests);
 
     fsSync.writeFileSync('bannerData/bannerData' + datetime.toISOString().slice(0,10) + '.json', JSON.stringify(bannerDataArray, null, 2));
