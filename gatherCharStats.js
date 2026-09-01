@@ -6,7 +6,7 @@ const path = require("path");
 const { parse } = require("csv-parse/sync");
 const { stringify } = require("csv-stringify/sync");
 
-const nameToExtract = "Yao Guang"; // change this
+const nameToExtract = "Silver Wolf LV.<nobr>999</nobr>"; // change this
 const startDate = "2026-03-01";  // change this (YYYY-MM-DD)
 const maxMissingFiles = 5;
 
