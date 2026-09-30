@@ -5,7 +5,7 @@ var datetime = new Date();
 
 async function getKey() {
     axios
-        .get("https://starrailstation.com/api/v1/datav2/V4.3Live-15245519-d61d/1htif2w")
+        .get("https://starrailstation.com/api/v1/datav2/V4.3Live-15245519-b763/1htif2w")
         // Show response data
         .then((res) => writeKeyToFile(res.data))
         .catch((err) => console.log(err));
@@ -26,7 +26,7 @@ async function getBannerData() {
     let bannerDataArray = [];
     let requests = [];
 
-    for (let index = 2003; index <= 2140; index++) {
+    for (let index = 2003; index <= 2150; index++) {
         requests.push(
             axios.get("https://starrailstation.com/api/v1/warp_fetch/" + index)
             .then(res => bannerDataArray.push(res.data))

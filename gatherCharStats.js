@@ -66,7 +66,7 @@ while (missingCount < maxMissingFiles) {
 
 if (allRows.length > 0) {
     const out = stringify(allRows);
-    const outName = `${ nameToExtract }_extracted.csv`;
+    const outName = `sw999_extracted.csv`;
     fs.writeFileSync(outName, out, "utf8");
     console.log("Wrote", outName);
 } else {
