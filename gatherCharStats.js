@@ -6,7 +6,7 @@ const path = require("path");
 const { parse } = require("csv-parse/sync");
 const { stringify } = require("csv-stringify/sync");
 
-const nameToExtract = "Silver Wolf LV.<nobr>999</nobr>"; // change this
+const nameToExtract = "Robin • Summeretto"; // change this
 const startDate = "2026-03-01";  // change this (YYYY-MM-DD)
 const maxMissingFiles = 5;
 
@@ -66,7 +66,7 @@ while (missingCount < maxMissingFiles) {
 
 if (allRows.length > 0) {
     const out = stringify(allRows);
-    const outName = `sw999_extracted.csv`;
+    const outName = `${nameToExtract}_extracted.csv`;
     fs.writeFileSync(outName, out, "utf8");
     console.log("Wrote", outName);
 } else {
